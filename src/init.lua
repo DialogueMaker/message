@@ -16,14 +16,14 @@ local Message = {}
 --[[
   Creates a new Dialogue of type "Message".
 ]]
-function Message.new(content: DialogueConstructorContent, properties: DialogueConstructorProperties, children: DialogueConstructorChildren?)
+function Message.new(content: DialogueConstructorContent, properties: DialogueConstructorProperties?, children: DialogueConstructorChildren?)
 
   return Dialogue.new(content, {
     type = "Message" :: "Message";
-    settings = properties.settings;
-    runInitializationAction = properties.runInitializationAction;
-    runCompletionAction = properties.runCompletionAction;
-    verifyCondition = properties.verifyCondition;
+    settings = if properties then properties.settings else nil;
+    runInitializationAction = if properties then properties.runInitializationAction else nil;
+    runCompletionAction = if properties then properties.runCompletionAction else nil;
+    verifyCondition = if properties then properties.verifyCondition else nil;
   }, children);
 
 end;
