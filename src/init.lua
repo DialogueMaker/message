@@ -4,23 +4,27 @@ local packages = script.Parent.roblox_packages;
 local Dialogue = require(packages.Dialogue);
 local DialogueMakerTypes = require(packages.DialogueMakerTypes);
 
+type Dialogue = DialogueMakerTypes.Dialogue;
 type DialogueConstructorProperties = DialogueMakerTypes.DialogueConstructorProperties;
+type Effect = DialogueMakerTypes.Effect;
+type Page = DialogueMakerTypes.Page;
+type DialogueConstructorContent = DialogueMakerTypes.DialogueConstructorContent;
+type DialogueConstructorChildren = DialogueMakerTypes.DialogueConstructorChildren;
 
 local Message = {}
 
-function Message.new(properties: DialogueConstructorProperties)
+--[[
+  Creates a new Dialogue of type "Message".
+]]
+function Message.new(content: DialogueConstructorContent, properties: DialogueConstructorProperties, children: DialogueConstructorChildren?)
 
-  return Dialogue.new({
+  return Dialogue.new(content, {
     type = "Message" :: "Message";
-    children = properties.children;
-    getChildren = properties.getChildren;
-    content = properties.content;
-    getContent = properties.getContent;
     settings = properties.settings;
     runInitializationAction = properties.runInitializationAction;
     runCompletionAction = properties.runCompletionAction;
     verifyCondition = properties.verifyCondition;
-  });
+  }, children);
 
 end;
 
