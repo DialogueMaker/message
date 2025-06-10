@@ -14,7 +14,7 @@ type DialogueConstructorChildren = DialogueMakerTypes.DialogueConstructorChildre
 local Message = {}
 
 --[[
-  Creates a new Dialogue of type "Message".
+  Creates a new Dialogue object of type "Message".
 ]]
 function Message.new(content: DialogueConstructorContent, properties: DialogueConstructorProperties?, children: DialogueConstructorChildren?)
 
@@ -23,6 +23,7 @@ function Message.new(content: DialogueConstructorContent, properties: DialogueCo
     settings = if properties then properties.settings else nil;
     runInitializationAction = if properties then properties.runInitializationAction else nil;
     runCompletionAction = if properties then properties.runCompletionAction else nil;
+    runCleanupAction = if properties then properties.runCleanupAction else nil;
     verifyCondition = if properties then properties.verifyCondition else nil;
   }, children);
 
